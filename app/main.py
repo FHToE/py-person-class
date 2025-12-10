@@ -22,17 +22,15 @@ def create_person_list(people: list) -> list:
     if not created_people:
         return []
 
-    all_created_people = created_people[0].people
-
     for person in people:
-        if  person.get("wife"):
-            person_instance = all_created_people[person["name"]]
-            wife_instance = all_created_people[person["wife"]]
+        if person.get("wife"):
+            person_instance = Person.people[person["name"]]
+            wife_instance = Person.people[person["wife"]]
             person_instance.wife = wife_instance
 
         if person.get("husband"):
-            person_instance = all_created_people[person["name"]]
-            husband_instance = all_created_people[person["husband"]]
+            person_instance = Person.people[person["name"]]
+            husband_instance = Person.people[person["husband"]]
             person_instance.husband = husband_instance
 
     return created_people
