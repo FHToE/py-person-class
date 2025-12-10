@@ -7,7 +7,7 @@ class Person:
     def __init__(self, name: str, age: int) -> None:
         self.name = name
         self.age = age
-        self.people[name] = self
+        Person.people[name] = self
 
 
 def create_person_list(people: list) -> list:
@@ -25,12 +25,12 @@ def create_person_list(people: list) -> list:
     all_created_people = created_people[0].people
 
     for person in people:
-        if "wife" in person and person["wife"] is not None:
+        if  person.get("wife"):
             person_instance = all_created_people[person["name"]]
             wife_instance = all_created_people[person["wife"]]
             person_instance.wife = wife_instance
 
-        if "husband" in person and person["husband"] is not None:
+        if person.get("husband"):
             person_instance = all_created_people[person["name"]]
             husband_instance = all_created_people[person["husband"]]
             person_instance.husband = husband_instance
